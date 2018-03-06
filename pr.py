@@ -1,0 +1,16 @@
+import MySQLdb
+db = MySQLdb.connect("localhost","","","dbstudent1211")
+cursor = db.cursor()
+cursor.execute("CREATE TABLE PRAVEEN211 (id int,name char(20) not null,sex char(20))")
+cursor.execute("INSERT INTO PRAVEEN211 VALUES(1,'ann','f')")
+cursor.execute("INSERT INTO PRAVEEN211 VALUES(2,'rose','f')")
+cursor.execute("SELECT * FROM PRAVEEN211")
+cursor.execute("UPDATE PRAVEEN211 SET NAME= 'ARYA' WHERE ID=1")
+cursor.execute("SELECT * FROM PRAVEEN211")
+cursor.execute("DELETE FROM PRAVEEN211 WHERE ID =1")
+cursor.execute("SELECT * FROM PRAVEEN211")
+data = cursor.fetchall()
+for i in data:
+	 print('{0:3}|{1}|{2}'.format(i[0],i[1],i[2]))
+cursor.execute("commit")
+db.close()
